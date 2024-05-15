@@ -44,6 +44,11 @@ func get_types(args []string) (map[string]int, map[string]int) {
 	return author, subject
 }
 
+func print_entry(line string) {
+	entry := strings.Split(line, " | ")
+	fmt.Printf("\tINDEX   : %s\n\tAUTHORS : %s\n\tTITLE   : %s\n\tSUBJECT : %s\n\n", entry[0], entry[3], entry[1], entry[2])
+}
+
 // enter index entry ///////////////////////////////////////////////////////////
 
 func get_index_no() int {
@@ -130,6 +135,9 @@ func enter(args []string) {
 	if err := f.Close(); err != nil {
 		log.Fatal(err)
 	}
+
+	fmt.Println("Entered article:")
+	print_entry(line)
 }
 
 // search index entry //////////////////////////////////////////////////////////
@@ -177,13 +185,13 @@ func line_search(author, subject map[string]int, f *os.File) bool {
 
 		if len(author) > 0 && len(subject) > 0 && flag_author && flag_subject {
 			flag_found = false
-			fmt.Println(line)
+			print_entry(line)
 		} else if len(author) > 0 && len(subject) == 0 && flag_author {
 			flag_found = false
-			fmt.Println(line)
+			print_entry(line)
 		} else if len(author) == 0 && len(subject) > 0 && flag_subject {
 			flag_found = false
-			fmt.Println(line)
+			print_entry(line)
 		}
 	}
 
@@ -348,6 +356,39 @@ func remove_duplicates() {
 	}
 	if err := f.Close(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+// exhaustive searching ////////////////////////////////////////////////////////
+
+func list_search(arg []string, f *os.File) bool {
+	flag := true
+	var line []string
+	input := bufio.NewScanner(f)
+	for input.Scan() {
+	}
+}
+
+func list_subjects(args []string) {
+	f, err := os.Open(index)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fi, err := f.Stat()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if fi.Size() == 0 {
+		if err := f.Close(); err != nil {
+			log.Fatal(err)
+		}
+		log.Fatal("ERROR -- index is empty")
+	}
+
+	arg := strings.Split(args[1], "=")
+	if len(args) <= 1 || (arg[0] != "--author" && arg[0] != "--subject") {
+		log.Fatal(error_message)
 	}
 }
 

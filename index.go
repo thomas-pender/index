@@ -44,6 +44,10 @@ func get_types(args []string) (map[string]int, map[string]int) {
 	return author, subject
 }
 
+func print_entry_array(line []string) {
+	fmt.Printf("\tINDEX   : %s\n\tAUTHORS : %s\n\tTITLE   : %s\n\tSUBJECT : %s\n\n", line[0], line[3], line[1], line[2])
+}
+
 func print_entry(line string) {
 	entry := strings.Split(line, " | ")
 	fmt.Printf("\tINDEX   : %s\n\tAUTHORS : %s\n\tTITLE   : %s\n\tSUBJECT : %s\n\n", entry[0], entry[3], entry[1], entry[2])
@@ -363,10 +367,33 @@ func remove_duplicates() {
 
 func list_search(arg []string, f *os.File) bool {
 	flag := true
-	var line []string
+	var line, s []string
 	input := bufio.NewScanner(f)
 	for input.Scan() {
+		line = strings.Split(input.Text(), " | ")
+
+		if arg[0] == "--author" {
+			s = strings.Split(line[3], " ")
+			for i := 0; i <= len(s) && arg[1] <= s[i]; i++ {
+				if arg[1] == s[i] {
+					flag = false
+					print_entry_array(line)
+				}
+			}
+		}
+
+		if arg[0] == "--subject" {
+			s = strings.Split(line[1], " ")
+			for i := 0; i < len(s) && arg[1] <= s[i]; i++ {
+				if arg[1] == s[i] {
+					flag = false
+					print_entry_array(line)
+				}
+			}
+		}
 	}
+
+	return flag
 }
 
 func list_subjects(args []string) {
@@ -389,6 +416,10 @@ func list_subjects(args []string) {
 	arg := strings.Split(args[1], "=")
 	if len(args) <= 1 || (arg[0] != "--author" && arg[0] != "--subject") {
 		log.Fatal(error_message)
+	}
+
+	if list_search(arg, f) {
+		fmt.Println("ERROR -- no such entry")
 	}
 }
 
@@ -418,5 +449,10 @@ func main() {
 		entry_remove(args[1:])
 	case "remove-duplicates":
 		remove_duplicates()
+	case "list":
+		if len(args) <= 1 {
+			log.Fatal(error_message)
+		}
+		list_subjects(args)
 	}
 }

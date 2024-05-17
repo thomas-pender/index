@@ -45,12 +45,12 @@ func get_types(args []string) (map[string]int, map[string]int) {
 }
 
 func print_entry_array(line []string) {
-	fmt.Printf("\tINDEX   : %s\n\tAUTHORS : %s\n\tTITLE   : %s\n\tSUBJECT : %s\n\n", line[0], line[3], line[1], line[2])
+	fmt.Printf("\tINDEX    : %s\n\tAUTHORS  : %s\n\tTITLE    : %s\n\tSUBJECTS : %s\n\n", line[0], line[3], line[1], line[2])
 }
 
 func print_entry(line string) {
 	entry := strings.Split(line, " | ")
-	fmt.Printf("\tINDEX   : %s\n\tAUTHORS : %s\n\tTITLE   : %s\n\tSUBJECT : %s\n\n", entry[0], entry[3], entry[1], entry[2])
+	fmt.Printf("\tINDEX    : %s\n\tAUTHORS  : %s\n\tTITLE    : %s\n\tSUBJECTS : %s\n\n", entry[0], entry[3], entry[2], entry[1])
 }
 
 // enter index entry ///////////////////////////////////////////////////////////
@@ -131,8 +131,8 @@ func enter(args []string) {
 		log.Fatal(error_message)
 	}
 
-	line := strconv.Itoa(get_index_no()) + " | " + cat_type(subject) + " | " + title + " | " + cat_type(author) + "\n"
-	if _, err := f.WriteString(line); err != nil {
+	line := strconv.Itoa(get_index_no()) + " | " + cat_type(subject) + " | " + title + " | " + cat_type(author)
+	if _, err := f.WriteString(line + "\n"); err != nil {
 		log.Fatal(err)
 	}
 
@@ -365,8 +365,8 @@ func remove_duplicates() {
 
 // exhaustive searching ////////////////////////////////////////////////////////
 
-func list_search(arg []string, f *os.File) bool {
-	flag := true
+func list_search(arg []string, f *os.File) map[string]bool {
+	subjects := make(map[string]bool)
 	var line, s []string
 	input := bufio.NewScanner(f)
 	for input.Scan() {
@@ -374,26 +374,20 @@ func list_search(arg []string, f *os.File) bool {
 
 		if arg[0] == "--author" {
 			s = strings.Split(line[3], " ")
-			for i := 0; i <= len(s) && arg[1] <= s[i]; i++ {
-				if arg[1] == s[i] {
-					flag = false
-					print_entry_array(line)
-				}
+			for _, t := range s {
+				subjects[t] = true
 			}
 		}
 
 		if arg[0] == "--subject" {
 			s = strings.Split(line[1], " ")
-			for i := 0; i < len(s) && arg[1] <= s[i]; i++ {
-				if arg[1] == s[i] {
-					flag = false
-					print_entry_array(line)
-				}
+			for _, t := range s {
+				subjects[t] = true
 			}
 		}
 	}
 
-	return flag
+	return subjects
 }
 
 func list_subjects(args []string) {
@@ -418,8 +412,17 @@ func list_subjects(args []string) {
 		log.Fatal(error_message)
 	}
 
-	if list_search(arg, f) {
-		fmt.Println("ERROR -- no such entry")
+	subjects := list_search(arg, f)
+	subs := make([]string, 0, len(subjects))
+	for s, _ := range subjects {
+		subs = append(subs, s)
+	}
+	sort.Strings(subs)
+
+	for _, t := range subs {
+		if subjects[t] {
+			fmt.Println(t)
+		}
 	}
 }
 
@@ -454,5 +457,7 @@ func main() {
 			log.Fatal(error_message)
 		}
 		list_subjects(args)
+	default:
+		log.Fatal(error_message)
 	}
 }

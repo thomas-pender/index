@@ -1,0 +1,173 @@
+1 | HadamardMatrices Sequences | An infinite class of Williamson matrices | Turyn
+2 | HadamardMatrices Sequences | Hadamard Matrices, Bauhmert-Hall Units | Turyn
+3 | HadamardMatrices Sequences | An infinite class of Hadamard matrices of Williamson type | Whiteman
+4 | HadamardMatrices Sequences | An infinite family of skew Hadamard matrices | Whiteman
+5 | HadamardMatrices Sequences | Skew Hadamard matrices of Goethals-Seidel type | Whiteman
+6 | HadamardMatrices Sequences | Hadamard matrices of order 4(2p+1) | Whiteman
+7 | DiffConfig HadamardMatrices | Williamson matrices and a conjecture of Ito | Schmidt
+8 | HadamardMatrices Sequences | Application of the discrete Fourier transform to the search for generalized Legendre pairs and Hadamard matrices | Fletcher Gysin Seberry
+9 | Sequences | Legendre pair 77 | Bulutoglu Geyer Kotsireas Turner
+10 | Sequences | Legendre pairs 0 mod 3 | Kotsireas Koutschan
+11 | Srgs | A (49,16,3,6) strongly regular graph does not exist | Bussemaker Haemers Mathon
+12 | Bgws Designs Graphs | Double regular digraphs and symmetric designs | Ionin Kharaghani
+13 | Sequences | Legendre pairs 0 mod 5 | Bulutoglu Kotsireas Koutschan Turner
+14 | Sequences | Quaternary Legendre pairs | Kotsireas Winterhof
+15 | Sequences | Quaternary Legendre pairs II | Kotsireas Winterhof
+16 | DiffConfig Sequences | Legendre G-arrays | Arasu Bulutoglu Hollon
+17 | ConferenceMatrices Sequences | Conference matrices from Legendre C-pairs | Balonin Djokovic
+18 | Bracelets Generation | Generating bracelets with fixed content | Husnine Karim Sawada
+19 | Generation Necklaces | A fast algorithm to generate necklaces with fixed content | Sawada
+20 | Bracelets Generation | Generating bracelets in constant amortized time | Sawada
+21 | Generation Necklaces | An efficient algorithm for generating necklaces with fixed content | Ruskey Sawada
+22 | Generation Necklaces | An efficient algorithm for generating necklaces with fixed density | Ruskey Sawada
+23 | Enumeration ProbobalisticMethod | Three tutorial lectures on entropy and counting | Galvin
+24 | FiniteGeometry ProjectiveGeometry | (Hyper)ovals and ovoids in projective spaces | Brown
+25 | AffineGeometry FiniteGeometry ProjectiveGeometry | Sets of mutually orthogoval projective and affine planes | Colbourn Ingalls Jedwab Saaltink Smith Stevens
+26 | Groups LinearGroups | Some presentations for the special linear groups on finite fields | Chiaselotti
+27 | Groups LinearGroups | A note on presentations of general linear groups over a finite field | Maheshwari Sharma
+28 | DiffConfig | A unified approach to difference sets with gcd(V,N)>1 | Davis Jedwab
+29 | DiffConfig | Constructions of partial difference sets and relative difference sets on p-groups | Leung Ma
+30 | DiffConfig | Constructions of difference sets in nonabelian 2-groups | Applebaum Clikeman Davis Dillon Jedwab Rabbani Smith Yolland
+31 | DiffConfig | Nested Hadamard difference sets | Davis Jedwab
+32 | DiffConfig | Reversible and DRAD difference sets in (C_2^2r)^3 | Webster
+33 | DiffConfig | A new product construction for partial difference sets | Davis Polhill Smith
+34 | DiffConfig | A new family of partial difference sets in 3-groups | Polhill
+35 | AssociationSchemes DiffConfig | Partial difference sets and amorphic group schemes from pseudo-quadratic bent functions | Chen Polhill
+36 | AssociationSchemes DiffConfig | Difference set constructions of DRADs and association schemes | Davis Polhill
+37 | AssociationSchemes DiffConfig | Negative latin square-type partial difference sets and amorphic association schemes with Galois rings | Polhill
+38 | DiffConfig | New negative latin square type partial difference sets in nonelemtary abelian 2-groups and 3-groups | Polhill
+39 | DiffConfig | A construction of difference sets in high exponent 2-groups using representation theory | Davis Smith
+40 | DiffConfig | Construction of relative difference sets in p-groups | Davis
+41 | DiffConfig | A unifying construction for difference sets | Davis Jedwab
+42 | DiffConfig | Difference sets of Galois rings with odd extension degrees and char an even power of 2 | Yamada
+43 | DiffConfig | A family of partial difference sets with Denniston parameters in nonelementary abelian 2-groups | Davis Xiang
+44 | Cyclotomy DiffConfig | Uniform Cyclotomy | Baumert Mills Ward
+45 | DiffConfig | Constructions of partial difference sets and relative difference sets using Galois rings | Ray-Chaudhuri Xiang
+46 | DiffConfig | Constructions of partial difference sets and relative difference sets using Galois rings II | Ray-Chaudhuri Xiang
+47 | DiffConfig | Hadamard difference sets over an extension of Z/4Z | Yamada Yamamoto
+48 | DiffConfig LinearCodes | The geometry of two-weight codes | Calderbank Kantor
+49 | BalancedWeighingMatrices DiffConfig | The solution of the Waterloo problem | Arasu Dillon Jungnickel Pott
+50 | DiffConfig | Relative difference sets | Butson Elliot
+51 | DiffConfig | A survey of partial difference sets | Ma
+52 | DiffConfig | Groups rings and character sums: tricks of the trade | Jedwab Li
+53 | DiffConfig | Packings of partial difference sets | Jedwab Li
+54 | Automorphisms Designs DiffConfig | On automorphism groups of divisible designs | Jungnickel
+55 | DiffConfig | Cyclic relative difference sets with classical parameters | Arasu Dillon Leung Ma
+56 | Bgws DiffConfig GHMatrices | Relations among GH matrices, RDSs, and Maximal length linear recurring sequences | Butson
+57 | Bgws DiffConfig | Perfect codes and BGW matrices | Jungnickel Tonchev
+58 | Bgws DiffConfig | Perfect codes and BGW matrices II | Jungnickel Tonchev
+59 | DezaGraphs Srgs | Spectra of strongly Deza graphs | Akbari Haemers Hosseinzadeh Kabanov Konstantinova Shalaginov
+60 | DezaGraphs Srgs | Spectra of Deza graphs | Akbari Haemers Hosseinzadeh Kabanov Konstantinova Shalaginov
+61 | DezaGraphs | Deza graphs: a survey and new results | Goryainov Shalaginov
+62 | DezaGraphs | Deza graphs: a generalization of strongly regular graphs | Erickson Fernando Haemers Hardy Hemmeter
+63 | HadamardMatrices | Constructions and restrictions for balanced splittable Hadamard matrices | Jedwab Li Simon
+64 | AssociationSchemes | Three-class association schemes | VanDam
+65 | AssociationSchemes | Imprimitive cometric association schemes: constructions and analysis | Martin Muzychuk Williford
+66 | Codes Designs QuasiSymmetric | Quasi-symmetric designs and codes meeting the Grey-Rankin bound | McGuire
+67 | AssociationSchemes Codes | Four fundamental parameters of a code and their significance | Delsarte
+68 | PartialGeometries Pbds Srgs | Strongly regular graphs, partial geometries and partially balanced designs | Bose
+69 | DiffConfig LinkingSystems | Linking systems in nonelementary abelian groups | Davis Martin Polhill
+70 | Designs LinkingSystems | Linked systems of symmetric group divisible designs | Kharaghani Suda
+71 | Designs LinkingSystems | On homogeneous systems of linked symmetric designs | Noda
+72 | Designs LinkingSystems | The systems of linked 2-(16, 6, 2) designs | Mathon
+73 | Designs LinkingSystems | On groups with several doubly-transitive permutation representations | Cameron
+74 | HadamardMatrices | Williamson type Hadamard matrices with circulant components | Fitzpatrick OKeeffe
+75 | Sequences | 4-phase sequences with near-optimum correlation properties | Boztas Hammons Kumar
+76 | Codes | The Z_4-linearity of Kerdock, Preparata, Goethals, and related codes | Calderbank Hammons Kumar
+77 | Codes CostantWeightCodes | On equidistant constant weight codes | Fu Klove Luo Wei
+78 | HadamardMatrices Unbiased | On the real unbiased Hadamard matrices | Holzmann Kharaghani Orrick
+79 | HadamardMatrices OrthogonalDesigns Unbiased | Unbiasedd orthogonal designs | Kharaghani Suda
+80 | HadamardMatrices Unbiased | Unbiased complex Hadamard matrices and bases | Best Kharaghani
+81 | HadamardMatrices Unbiased | mutually unbiased weighing matrices | Best Kharaghani Ramp
+82 | Cliques Generation | A simple faster branch-and-bound algorithm for finding a maximum clique with computational experiments | Higashi Sutani Tomita Wakatsuki
+83 | Cliques Generation | An efficient branch-and-bound algorithm for finding a maximal clique | Seki Tomita
+84 | Clique Generation | An efficient branch-and-bound algorithm for finding a maximum clique with computational experiments | Kameda Tomita
+85 | Cliques Generation | A much faster algorithm for finding a maximum clique with computational experiments | Ito Matsuzaki Nagao Tomita Wakatsuki
+86 | Cliques Generation | An exact bit-parallel algorithm for the maximum clique problem | Jimenez Losada Segundo
+87 | Cliques Generation | An improved bit parallel exact maximum clique algorithm | Hernando Losada Matia Segundo
+88 | Cliques Generation | Exact algorithms for maximum clique: a computational study | Prosser
+89 | Cliques Generation | Arboricity and subgraph listing algorithms | Chiba Nishizeki
+90 | AssociationSchemes Cliques Digraphs | Hoffman's coclique bound for normal regular digraphs, and nonsymmetric association schemes | Kharaghani Suda
+91 | AssociationSchemes | Non-commutative association schemes and their fusion association schemes | Kharaghani Suda
+92 | AssociationSchemes | Coherent configurations | Higman
+93 | HadamardMatrices | Morphisms of skew Hadamard matrices | Heikoop OCathain Ponasso Pugmire
+94 | Bgws Designs | Applying Bgws to construct block designs | Ionin
+95 | Bgws Srgs | New families of strongly regular graphs | Ionin Kharaghani
+96 | Bgws | Bgw matrices and their applications | Jungnickel Kharaghani
+97 | Bgws Codes | Bgws and self-dual codes | Tonchev
+98 | Bgws Designs | Some techniques for constructing infininte families of BIBDs | Rajkundlia
+99 | Sequences | Complex Golay sequences: structure and applications | Craigen Holzmann Kharaghani
+100 | Sequences | Dihedral Golay sequences | Kamali Kharaghani
+101 | Automorphisms Codes Generation | The automorphisms groups of linear codes and canonical representatives of their semilinear isometry classes | Feulner
+102 | Sequences | A theory of ternary complementary pairs | Craigen Koukouvinos
+103 | OrthogonalDesigns Sequences | On sufficient conditions for some designs and sequences with zero autocorellation functions | Karabelas Koukouvinos Mitrouli Seberry
+104 | OrthogonalDesigns | Orthogonal designs from negacyclic matrices | Finlayson Seberry
+105 | HadamardMatrices OrthogonalDesigns | Remarks on negacyclic matrices | Seberry
+106 | Codes ConstantWeightCodes | Ternary constant weight codes | Ostergard Svanstrom
+107 | Codes Designs | Pseudo quasi-3 designs and their applications to coding theory | Bracken
+108 | Codes | On plotkin-optimal codes over finite frobenius rings | Greferath McGuire OSullivan
+109 | Codes | Binary self-complementary codes | Asemota
+110 | Automorphisms Codes | Computing automorphism groups of error-correcting codes | Leon
+111 | Bgws Designs Gbrds Generation | Construction methods for Bhaskar Rao and related designs | Gibbons Mathon
+112 | Srgs | Unitary graphs and their automorphisms | Wan Zhou
+113 | Srgs | Orthogonal graphs of odd characteristic and their automorphisms | Gu Wan
+114 | Srgs | Symplectic graphs and their automorphisms | Tang Wan
+115 | HadamardMatrices | Balancedly splittable Hadamard matrices | Kharaghani Suda
+116 | AssociationSchemes | Properties of tight frames that are regular schemes | Egan
+117 | EquiangularLines Unbiased | Equiangular lines, mutually inbiased bases, and spin models | Godsil Roy
+118 | Frames | Real equiangular frames | Casazza Redmond Tremain
+119 | Frames | The art of frame theory | Casazza
+120 | Frames | Hadamard equiangular tight frames | Fickus Jasper Mixon Peterson
+121 | Frames | On the existence of equiangular tight frames | Dhillon Heath Sustik Tropp
+122 | Codes Frames | Kirkman equiangular tight frames and codes | Fickus Jasper Mixon
+123 | Codes Frames | Grassmannian frames with applications to coding and communication | Heath Robert Strohmer
+124 | Frames | Optimal frames for easures | Holmes Paulsen
+125 | Frames | Steiner equiangular tight frames | Fickus Mixon Tremain
+126 | Designs QuasiSymmetricDesigns | New quasi-symmetric designs constructed using mutually orthogonal Latin squares and Hadamard matrices | Bracken McGuire Ward
+127 | EquiangularLines | Equiangular Lines | Lemmens Seidel
+128 | Srgs | A directed version of Srgs | Duval
+129 | Sequences | Three-phase Golay sequence and array triads | Avis Jedwab
+130 | LittlewoodPolynomials | The distribution of the L_4 norm of Littlewood polynomials | Jedwab
+131 | MeritFactor Sequences | Advance in the merit factor problem for binary sequences | Jedwab Katz Schmidt
+132 | Codes Sequences | Peak-to-mean power control in OFDM, Golay complementary sequences and Reed-Muller codes | Davis Jedwab
+133 | Sequences | A multi-dimensional approach to the construction and enuemration of Golay complementary sequences | Fiedler Jedwab Matthew Parker
+134 | AssociationSchemes Unbiased | On the equivalence between real mutually unbiased bases and a certain class of association schemes | LeCompte Martin Owens
+135 | Frames | Constructions of biangular tight frames and their relationships with equiangular tight frames | Cahill Casazza Haas Tremain
+136 | Frames | On the construction of equiangular tight frames from graphs | Waldron
+137 | Gospel | Weightier matters | Oaks
+138 | Sequences | New construction method for quaternary aperiodic, periodic, and Z-complementary sequence sets | Xiao Xuan Zeng Zeng Zeng Zhang
+139 | Cocycles | Formal orthogonal pairs via monomial representations and cohomology | Goldberger Kotsireas
+140 | Sequences | Quaternary Legendre Pairs | Kotsireas Winterhof
+141 | DOptimalMatrices | New results on D-optimal matrices | Djokovic Kotsireas
+142 | Sequences | Phased unitary Golay pairs, Butson Hadamard matrices and a conjecture of Ito's | Egan
+143 | Sequences | Generalized pairs of complementary sequences and a construction of combinatorial structures | Egan
+144 | HadamardMatrices | On the classification of skew Hadamard matrices of order 36 and related structures | Araya Harada Kharaghani Mohammadian Tayfeh-Rwzaie
+145 | Automorphisms HadamardMatrices | Automorphisms groups of Hadamard matrices | Kantor
+146 | Automorphisms HadamardMatrices | Automorphisms of Hadamard matrices | Hall
+147 | Automorphisms HadamardMatrices | Note on the Mathieu group M_12 | Hall
+148 | FiniteFields | A theorem on permutations in a finite field | Carlitz
+149 | Automorphisms Generation HadamardMatrices | Hadamard matrices of order 28 with automorphisms of order 7 | Tonchev
+150 | Automorphisms Generation HadamardMatrices | Hadamard matrices of order 28 with automorphisms of order 13 | Tonchev
+151 | Automorphisms HadamardMatrices | Hadamard matrices of order 36 with automorphisms of order 17 | Tonchev
+152 | Automorphisms Designs | On collineation groups of symmetric block designs | Aschbacher
+153 | Automorphisms Designs Generation | Non-isomorphic solutions of some balanced incomplete block designs I | Bhat Skrikhande
+154 | Automorphisms Designs Generation | Non-isomorphic solutions of some balanced incomplete block designs II | Bhat 
+155 | Automorphisms Designs Generation | Non-isomorphic solutions of some balanced incomplete block designs III | Bhat
+156 | Codes Designs | Symmetric designs and self-dual codes | Lander
+157 | Codes Designs HadamardMatrices | On pless symmetry codes, ternary QR codes, and related Hadamard matrices and designs | Tonchev
+158 | Automorphisms Generation HadamardMatrices | Hadamard matrices of orders 60 and 64 with automorphisms of orders 29 and 31 | Araya Harada Tonchev
+159 | Designs Generation | Computing techniques for the construction and analysis of block designs | Corneil Gibbons Mathon
+160 | Bgws Designs Generation | Group signings of symmetric BIBDs | Gibbons Mathon
+161 | ConferenceMatrices | Orthogonal matrices with zero diagonal II | Delsarte Goethals Seidel
+162 | Generation HadamardMatrices | A Hadamard matrix of order 428 | Kharaghani Tayfeh-Rezaie
+163 | DiffConfig | On supplementary difference sets | Seberry
+164 | Designs Gbrds | Regular group divisible designs and Bhaskar Rao designs with block size three | Seberry
+165 | Designs | Some families of partially balanced incomplete block designs | Seberry
+166 | Gbrds | Generalized Bhaskar Rao designs | Lam Seberry
+167 | DiffConfig HadamardMatrices | Supplementary difference sets with symmetry for Hadamard matrices | Djokovic
+168 | Sequences | New infinite families of perfect quaternion sequences and Williamson sequences | Bright Ganesh Kotsireas
+169 | Sequences | Compression of periodic complementary sequences and applications | Djokovic Kotsireas
+170 | Sequences | On Golay polynomial pairs | Eliahou Kervaire Saffari
+171 | DiffConfig Sequences | On the existence of periodic complementary binary sequences | Arasu Xiang
+172 | Generation Sequences | A complete description of Golay pairs for lengths up to 100 | Borwein Ferguson
+173 | Sequences | Some new periodic Golay pairs | Djokovic Kotsireas

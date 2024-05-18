@@ -33,8 +33,8 @@ func (e *entry) indexLine() string {
 	return e.index + " | " + strings.Join(e.subject, " ") + " | " + e.title + " | " + strings.Join(e.author, " ")
 }
 
-func (e *entry) print() {
-	fmt.Printf("\tINDEX    : %s\n\tAUTHORS  : %s\n\tTITLE    : %s\n\tSUBJECTS : %s\n\n", e.index, strings.Join(e.author, " "), e.title, strings.Join(e.subject, " "))
+func (e *entry) String() string {
+	return fmt.Sprintf("\tINDEX    : %s\n\tAUTHORS  : %s\n\tTITLE    : %s\n\tSUBJECTS : %s\n", e.index, strings.Join(e.author, " "), e.title, strings.Join(e.subject, " "))
 }
 
 func entryInit(index, title, author, subject string) *entry {
@@ -91,7 +91,7 @@ func returnFile(flag int, mode os.FileMode) (*os.File, bool) {
 
 func printLine(line string) {
 	e := strings.Split(line, " | ")
-	entryInit(e[numIndex], e[titleIndex], e[authorIndex], e[subjectIndex]).print()
+	fmt.Println(entryInit(e[numIndex], e[titleIndex], e[authorIndex], e[subjectIndex]))
 }
 
 // enter ///////////////////////////////////////////////////////////////////////
@@ -138,7 +138,7 @@ func enter(e *entry) {
 		log.Fatal(err)
 	}
 
-	e.print()
+	fmt.Println(e)
 }
 
 // search //////////////////////////////////////////////////////////////////////

@@ -1,0 +1,329 @@
+package main
+
+import (
+	"bufio"
+	"errors"
+	"flag"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
+)
+
+const (
+	index        = "@abs_top_builddir@/data/index.data"
+	indexSize    = 5000
+	authorIndex  = 3
+	subjectIndex = 1
+	numIndex     = 0
+	titleIndex   = 2
+)
+
+// entry type //////////////////////////////////////////////////////////////////
+
+type entry struct {
+	index, title    string
+	author, subject []string
+}
+
+func (e *entry) indexLine() string {
+	return e.index + " | " + strings.Join(e.subject, " ") + " | " + e.title + " | " + strings.Join(e.author, " ")
+}
+
+func (e *entry) String() string {
+	return fmt.Sprintf("\tINDEX    : %s\n\tAUTHORS  : %s\n\tTITLE    : %s\n\tSUBJECTS : %s\n", e.index, strings.Join(e.author, " "), e.title, strings.Join(e.subject, " "))
+}
+
+func entryInit(index, title, author, subject string) *entry {
+	authors, subjects := strings.Split(author, " "), strings.Split(subject, " ")
+	sort.Strings(authors)
+	sort.Strings(subjects)
+	e := entry{index, title, authors, subjects}
+	return &e
+}
+
+// search type /////////////////////////////////////////////////////////////////
+
+type searchPair struct {
+	author, subject map[string]int
+}
+
+func searchPairInit(author, subject string) *searchPair {
+	authors, subjects := make(map[string]int), make(map[string]int)
+
+	if len(author) > 0 {
+		for _, name := range strings.Split(author, " ") {
+			authors[name]++
+		}
+	}
+	if len(subject) > 0 {
+		for _, sub := range strings.Split(subject, " ") {
+			subjects[sub]++
+		}
+	}
+
+	s := searchPair{authors, subjects}
+
+	return &s
+}
+
+// helpers /////////////////////////////////////////////////////////////////////
+
+func returnFile(flag int, mode os.FileMode) (*os.File, bool) {
+	f, err := os.OpenFile(index, flag, mode)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fi, err := f.Stat()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if fi.Size() == 0 {
+		return f, false
+	}
+
+	return f, true
+}
+
+func printLine(line string) {
+	e := strings.Split(line, " | ")
+	fmt.Println(entryInit(e[numIndex], e[titleIndex], e[authorIndex], e[subjectIndex]))
+}
+
+// enter ///////////////////////////////////////////////////////////////////////
+
+func getIndexNum() string {
+	f, flag := returnFile(os.O_RDONLY|os.O_CREATE, 0644)
+	if !flag {
+		return "1"
+	}
+
+	count := 0
+	indices := make([]int, 0, indexSize)
+
+	input := bufio.NewScanner(f)
+	for input.Scan() {
+		line := strings.Split(input.Text(), " ")
+		n, err := strconv.Atoi(line[0])
+		if err != nil {
+			log.Fatal(err)
+		}
+		indices = append(indices, n)
+		count++
+	}
+	sort.Ints(indices)
+	if err := f.Close(); err != nil {
+		log.Fatal(err)
+	}
+
+	for i, j := range indices {
+		if i+1 != j {
+			return strconv.Itoa(i + 1)
+		}
+	}
+	return strconv.Itoa(count + 1)
+}
+
+func enter(e *entry) {
+	f, _ := returnFile(os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+
+	if _, err := f.WriteString(e.indexLine() + "\n"); err != nil {
+		log.Fatal(err)
+	}
+	if err := f.Close(); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(e)
+}
+
+// search //////////////////////////////////////////////////////////////////////
+
+func checkLine(s *searchPair, line string) (bool, bool) {
+	var count int
+	var flagAuthor, flagSubject bool
+
+	e := strings.Split(line, " | ")
+
+	count = 0
+	for _, name := range strings.Split(e[authorIndex], " ") {
+		if s.author[name] > 0 {
+			count++
+		}
+	}
+	if count == len(s.author) {
+		flagAuthor = true
+	}
+
+	count = 0
+	for _, sub := range strings.Split(e[subjectIndex], " ") {
+		if s.subject[sub] > 0 {
+			count++
+		}
+	}
+	if count == len(s.subject) {
+		flagSubject = true
+	}
+
+	return flagAuthor, flagSubject
+}
+
+func searchLines(s *searchPair, f *os.File) bool {
+	var line string
+	input := bufio.NewScanner(f)
+	var flagAuthor, flagSubject, flagFound bool
+
+	flagFound = true
+	for input.Scan() {
+		line = input.Text()
+		flagAuthor, flagSubject = checkLine(s, line)
+
+		if len(s.author) > 0 && len(s.subject) > 0 && flagAuthor && flagSubject {
+			flagFound = false
+			printLine(line)
+		} else if len(s.author) > 0 && len(s.subject) == 0 && flagAuthor {
+			flagFound = false
+			printLine(line)
+		} else if len(s.author) == 0 && len(s.subject) > 0 && flagSubject {
+			flagFound = false
+			printLine(line)
+		}
+	}
+
+	return flagFound
+}
+
+func search(s *searchPair) {
+	f, flag := returnFile(os.O_RDONLY, 0644)
+	if !flag {
+		log.Fatal(errors.New("index file is empty"))
+	}
+
+	if searchLines(s, f) {
+		fmt.Println("\tNo such entry contained in index")
+	}
+
+	if err := f.Close(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+// list ////////////////////////////////////////////////////////////////////////
+
+func list() {
+	f, flag := returnFile(os.O_RDONLY, 0644)
+	if !flag {
+		log.Fatal(errors.New("index file is empty"))
+	}
+
+	subjects := make(map[string]bool)
+	input := bufio.NewScanner(f)
+	for input.Scan() {
+		for _, sub := range strings.Split((strings.Split(input.Text(), " | "))[subjectIndex], " ") {
+			subjects[sub] = true
+		}
+	}
+	if err := f.Close(); err != nil {
+		log.Fatal(err)
+	}
+
+	subs := make([]string, 0, indexSize)
+	for sub, _ := range subjects {
+		subs = append(subs, sub)
+	}
+	sort.Strings(subs)
+
+	for _, sub := range subs {
+		fmt.Println(sub)
+	}
+}
+
+// remove entry ////////////////////////////////////////////////////////////////
+
+func getEntries(index string, f *os.File) (map[*entry]bool, bool) {
+	var found bool
+	var line []string
+	entries := make(map[*entry]bool)
+	input := bufio.NewScanner(f)
+	for input.Scan() {
+		line = strings.Split(input.Text(), " | ")
+		if line[numIndex] == index {
+			found = true
+		} else {
+			entries[entryInit(line[numIndex], line[titleIndex], line[authorIndex], line[subjectIndex])] = true
+		}
+	}
+	return entries, found
+}
+
+func removeEntry(index string) {
+	f, flag := returnFile(os.O_RDWR, 0644)
+	if !flag {
+		log.Fatal(errors.New("index file is empty"))
+	}
+
+	entries, found := getEntries(index, f)
+
+	if found {
+		if err := f.Truncate(0); err != nil {
+			log.Fatal(err)
+		}
+		if _, err := f.Seek(0, io.SeekStart); err != nil {
+			log.Fatal(err)
+		}
+
+		for e, _ := range entries {
+			if _, err := f.WriteString(e.indexLine() + "\n"); err != nil {
+				log.Fatal(err)
+			}
+		}
+	} else {
+		fmt.Println("\tNo such entry contained in index")
+	}
+
+	if err := f.Close(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+// driver //////////////////////////////////////////////////////////////////////
+
+func main() {
+	author := flag.String("author", "", "string of authors' names serparated by a space")
+	subject := flag.String("subject", "", "string of subject types serparated by a space")
+	title := flag.String("title", "", "title of entry")
+	index := flag.String("index", "", "index number")
+	operation := flag.String("func", "", "functions to perform on index: enter search list remove")
+
+	flag.Parse()
+
+	if *operation == "" {
+		log.Fatal(errors.New("requires operation"))
+	}
+
+	switch *operation {
+	case "enter":
+		if *author == "" || *subject == "" || *title == "" {
+			log.Fatal(errors.New("-enter requires -author -subject -title"))
+		}
+		enter(entryInit(getIndexNum(), *title, *author, *subject))
+	case "search":
+		if *author == "" && *subject == "" {
+			log.Fatal(errors.New("-search requires -author or -subject"))
+		}
+		search(searchPairInit(*author, *subject))
+	case "list":
+		list()
+	case "remove":
+		if *index == "" {
+			log.Fatal(errors.New("-remove requires -index"))
+		}
+		removeEntry(*index)
+	default:
+		log.Fatal(errors.New("incorrect operation"))
+	}
+}

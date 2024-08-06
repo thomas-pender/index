@@ -5,7 +5,7 @@ Compile and install with:
 1. <tt>mkdir build && cd build</tt>
 2. <tt>../configure</tt>
 3. <tt>make</tt>
-4. <tt>make install</tt>
+4. <tt>sudo make install</tt>
 
 ## Configuration Options
 
@@ -36,7 +36,6 @@ Available functions:
 4. <tt>remove</tt>: remove particular item from index.
 
 Example:
-
 <code>
 <tt>index -func=enter -author="Me MeToo" -title="Our paper"
 -subject="Stuff StuffAgain"</tt>
